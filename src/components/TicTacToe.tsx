@@ -28,7 +28,7 @@ export default function TicTacToe() {
 
     useEffect(() => {
         checkWin()
-    }, [grid])
+    }, [grid, checkWin])
 
     const handleClick = (index: number) => (event: any)  => {
         if (winner !== "") {
@@ -58,7 +58,7 @@ export default function TicTacToe() {
     return (
         <div>
             <h1 className="text-4xl font-bold text-center mb-4">Tic Tac Toe</h1>
-            <h2 className="text-2xl font-bold text-center mb-4">{player}'s turn</h2>
+            <h2 className="text-2xl font-bold text-center mb-4">{player}&apos;s turn</h2>
             <div className="flex justify-center flex-wrap">
                 {alert !== "" && (
                     <div className="bg-red-500 text-white font-bold rounded px-4 py-2 w-96 mb-5">

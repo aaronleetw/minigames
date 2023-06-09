@@ -2,38 +2,43 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import TicTacToe from '@/components/TicTacToe'
-import ConnectFour from '@/components/ConnectFour'
-import Minesweeper from '@/components/Minesweeper'
+import TaiGuessr from '@/components/TaiGuessr'
+import Wordle from '@/components/Wordle'
+import { Button, ButtonGroup, Divider, Heading, HStack } from '@chakra-ui/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <div>
-      <h1 className="text-4xl font-bold text-center mt-7">MiniGames</h1>
+      <Heading as="h1" className='text-center m-10'>
+        Games for APCS
+      </Heading>
       <Router>
-        <div className="flex flex-row justify-center gap-5 mt-7">
-          <Link to="tictactoe">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Tic Tac Toe
-            </button>
-          </Link>
-          <Link to="connect4">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Connect Four
-            </button>
-          </Link>
-          <Link to="minesweeper">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Minesweeper
-            </button>
-          </Link>
-        </div>
-        <br />
+        <HStack className='w-full justify-center'>
+          <ButtonGroup className="">
+            <Link to="tictactoe">
+              <Button colorScheme='blue'>
+                Tic Tac Toe
+              </Button>
+            </Link>
+            <Link to="taiguessr">
+              <Button colorScheme='blue'>
+                TaiGuessr
+              </Button>
+            </Link>
+            <Link to="wordle">
+              <Button colorScheme='blue'>
+                Wordle
+              </Button>
+            </Link>
+          </ButtonGroup>
+        </HStack>
+        <Divider className='mt-10 mb-10' />
         <Routes>
           <Route path="tictactoe" element={<TicTacToe />} />
-          <Route path="connect4" element={<ConnectFour />} />
-          <Route path="minesweeper" element={<Minesweeper />} />
+          <Route path="taiguessr" element={<TaiGuessr />} />
+          <Route path="wordle" element={<Wordle />} />
         </Routes>
       </Router>
     </div>
