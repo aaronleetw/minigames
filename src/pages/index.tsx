@@ -1,46 +1,40 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import TicTacToe from '@/components/TicTacToe'
-import TaiGuessr from '@/components/TaiGuessr'
-import Wordle from '@/components/Wordle'
-import { Button, ButtonGroup, Divider, Heading, HStack } from '@chakra-ui/react'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Box, Heading, HStack, Text, Link, Flex } from '@chakra-ui/react'
 
 export default function Home() {
   return (
-    <div>
-      <Heading as="h1" className='text-center m-10'>
+    <Box className="h-[100vh] w-full bg-gradient-to-r from-emerald-950 to-blue-950 text-white">
+      <Heading as="h1" className='text-center p-20 !text-5xl'>
         Games for APCS
       </Heading>
-      <Router>
-        <HStack className='w-full justify-center'>
-          <ButtonGroup className="">
-            <Link to="tictactoe">
-              <Button colorScheme='blue'>
+      <HStack className='w-full justify-evenly flex'>
+          <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
+            <Link href="/tictactoe" className="!no-underline">
+              <Heading as="h2" className='text-center m-5 !text-3xl'>
                 Tic Tac Toe
-              </Button>
+              </Heading>
+              <Image src='/tictactoe.png' className='m-auto' width={300} height={300} alt="tictactoe" />
+              <Text className="mt-5">
+                The classic game of Tic Tac Toe. Play against a friend and the computer will keep track of who won.
+              </Text>
             </Link>
-            <Link to="taiguessr">
-              <Button colorScheme='blue'>
+          </Flex>
+          <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
+            <Link href="/taiguessr" className="!no-underline">
+              <Heading as="h2" className='text-center m-5 !text-3xl'>
                 TaiGuessr
-              </Button>
+              </Heading>
+              <Image src='/taiguessr.png' className='m-auto' width={300} height={300} alt="taiguessr" />
+              <Text className="mt-5">
+                A browser-based geography game in which players guess locations from Google Street View imagery.
+                This game is based on <Link href="https://geoguessr.com">GeoGuessr</Link>, but only uses locations in Taiwan.
+                When the street image loads, you can click and drag to look around, and use the mouse wheel to zoom in and out.
+                Then use the map at the bottom left to guess where you are.
+                It is untimed and infinite, so you can play as long as you want.
+              </Text>
             </Link>
-            <Link to="wordle">
-              <Button colorScheme='blue'>
-                Wordle
-              </Button>
-            </Link>
-          </ButtonGroup>
-        </HStack>
-        <Divider className='mt-10 mb-10' />
-        <Routes>
-          <Route path="tictactoe" element={<TicTacToe />} />
-          <Route path="taiguessr" element={<TaiGuessr />} />
-          <Route path="wordle" element={<Wordle />} />
-        </Routes>
-      </Router>
-    </div>
+          </Flex>
+      </HStack>
+    </Box>
   )
 }

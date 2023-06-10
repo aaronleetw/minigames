@@ -1,3 +1,5 @@
+import { Box, Button, HStack, VStack } from "@chakra-ui/react"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function TicTacToe() {
@@ -23,6 +25,10 @@ export default function TicTacToe() {
             if (grid[a] && grid[a] === grid[b] && grid[a] === grid[c]) {
                 setWinner(grid[a])
             }
+        }
+
+        if (grid.every((value) => value !== null) && winner === "") {
+            setWinner("Nobody")
         }
     }
 
@@ -57,26 +63,35 @@ export default function TicTacToe() {
 
     return (
         <div>
-            <h1 className="text-4xl font-bold text-center mb-4">Tic Tac Toe</h1>
-            <h2 className="text-2xl font-bold text-center mb-4">{player}&apos;s turn</h2>
-            <div className="flex justify-center flex-wrap">
-                {alert !== "" && (
-                    <div className="bg-red-500 text-white font-bold rounded px-4 py-2 w-96 mb-5">
-                        {alert}
-                    </div>
-                )}
-                {winner !== "" && (
-                    <div className="block text-center">
-                        <div className="bg-green-500 text-white font-bold rounded px-4 py-2 w-96 mb-2">
-                            {winner} wins!
+            <Box className="w-full bg-slate-500 p-5 mb-7 text-white">
+                <VStack>
+                    <h1 className="text-4xl font-bold text-center m-7">Tic Tac Toe</h1>
+                    {winner === "" && 
+                        <h2 className="text-2xl font-bold text-center mb-4">{player}&apos;s turn</h2>
+                    }
+                    {alert !== "" && (
+                        <div className="bg-red-500 text-white font-bold rounded px-4 py-2 w-96 mb-2">
+                            {alert}
                         </div>
-                        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-5"
-                            onClick={restartGame()}>
-                            Restart Game
-                        </button>  
-                    </div>            
-                )}
-            </div>
+                    )}
+                    {winner !== "" && (
+                        <VStack className="items-center">
+                            <div className="bg-green-500 text-white font-bold rounded px-4 py-2 w-96 mb-2">
+                                {winner} wins!
+                            </div>
+                            <Button colorScheme="green" className="mb-2"
+                                onClick={restartGame()}>
+                                Restart Game
+                            </Button>
+                        </VStack>
+                    )}
+                    <HStack>
+                        <Link href="/">
+                            <Button className="m-3">Find more games</Button>
+                        </Link>
+                        </HStack>
+                </VStack>
+            </Box>
             <div className="flex justify-center">
                 <div className="grid grid-cols-3 gap-4">
                     {
