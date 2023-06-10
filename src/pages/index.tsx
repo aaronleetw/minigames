@@ -6,7 +6,7 @@ export default function Home() {
       <Heading as="h1" className='text-center p-20 !text-5xl'>
         APCS MiniGames
       </Heading>
-      <HStack className='w-full justify-evenly flex'>
+      <HStack className='w-full justify-evenly flex mb-4'>
           <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
             <Link href="/tictactoe" className="!no-underline">
               <Heading as="h2" className='text-center m-5 !text-3xl'>
@@ -34,6 +34,11 @@ export default function Home() {
             </Link>
           </Flex>
       </HStack>
+      <Link href="https://github.com/aaronleetw/apcs-minigames">
+        <Text className="text-center mt-10 text-xl">
+          View the source code on GitHub
+        </Text>
+      </Link>
     </Box>
   )
 }
