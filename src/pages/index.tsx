@@ -2,12 +2,12 @@ import { Box, Heading, HStack, Text, Link, Flex } from '@chakra-ui/react'
 
 export default function Home() {
   return (
-    <Box className="h-[100vh] w-full bg-gradient-to-r from-emerald-950 to-blue-950 text-white">
+    <Box className="min-h-[100vh] w-full bg-gradient-to-r from-emerald-950 to-blue-950 text-white">
       <Heading as="h1" className='text-center p-20 !text-5xl'>
         APCS MiniGames
       </Heading>
-      <HStack className='w-full justify-evenly flex mb-4'>
-          <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
+      <HStack className='w-full justify-evenly mb-4 lg:!flex !block items-stretch'>
+          <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-10/12 m-auto mb-3 lg:mt-0 lg:w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
             <Link href="/tictactoe" className="!no-underline">
               <Heading as="h2" className='text-center m-5 !text-3xl'>
                 Tic Tac Toe
@@ -18,7 +18,7 @@ export default function Home() {
               </Text>
             </Link>
           </Flex>
-          <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
+          <Flex className='rounded border self-stretch items-center border-gray-500 p-5 w-10/12 m-auto lg:w-4/12 text-center hover:bg-gradient-to-r from-emerald-400 to-blue-400 hover:text-black transition-all'>
             <Link href="/taiguessr" className="!no-underline">
               <Heading as="h2" className='text-center m-5 !text-3xl'>
                 TaiGuessr
@@ -35,7 +35,7 @@ export default function Home() {
           </Flex>
       </HStack>
       <Link href="https://github.com/aaronleetw/apcs-minigames">
-        <Text className="text-center mt-10 text-xl">
+        <Text className="text-center mt-10 text-xl pb-7">
           View the source code on GitHub
         </Text>
       </Link>
