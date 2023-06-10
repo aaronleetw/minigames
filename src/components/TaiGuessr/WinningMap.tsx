@@ -22,27 +22,22 @@ export const WinningMap: FunctionComponent<
   PropsWithChildren<{ ansInput: Coordinate | undefined, guessInput: Coordinate | undefined }>
 > = ({ children, ansInput, guessInput }) => {
 
-    if (!ansInput || !guessInput) return (<></>);
-
-    console.log("sup from winningmap")
-
-    const answer = [ansInput.longitude, ansInput.latitude];
-    const guess = [guessInput.longitude, guessInput.latitude];
-
     const mapElement = useRef<HTMLDivElement>(null);
     const mapRef = useRef<Map>();
 
-    const distInKm = () => {
-        const R = 6371e3; // metres
-        const φ1 = answer[0] * Math.PI/180; // φ, λ in radians
-        const φ2 = guess[0] * Math.PI/180;
-        const Δφ = (guess[0]-answer[0]) * Math.PI/180;
-        const Δλ = (guess[1]-answer[1]) * Math.PI/180;
-        return (Math.sqrt(Math.pow(R * Δφ, 2) + Math.pow(R * Math.cos((φ1+φ2)/2) * Δλ, 2)) / 1000).toFixed(3); // in km
-    }
-
     useEffect(() => {
-        console.log("sup22 from winningmap")
+        if (!ansInput || !guessInput) return;
+        const answer = [ansInput.longitude, ansInput.latitude];
+        const guess = [guessInput.longitude, guessInput.latitude];
+
+        const distInKm = () => {
+            const R = 6371e3; // metres
+            const φ1 = answer[0] * Math.PI/180; // φ, λ in radians
+            const φ2 = guess[0] * Math.PI/180;
+            const Δφ = (guess[0]-answer[0]) * Math.PI/180;
+            const Δλ = (guess[1]-answer[1]) * Math.PI/180;
+            return (Math.sqrt(Math.pow(R * Δφ, 2) + Math.pow(R * Math.cos((φ1+φ2)/2) * Δλ, 2)) / 1000).toFixed(3); // in km
+        }
         if (mapElement.current && !mapRef.current) {
             const answerStd = transform(answer, 'EPSG:4326', 'EPSG:3857');
             const guessStd = transform(guess, 'EPSG:4326', 'EPSG:3857');
@@ -136,6 +131,8 @@ export const WinningMap: FunctionComponent<
             });
         }
     }, [ansInput, guessInput]);
+
+    if (!ansInput || !guessInput) return (<></>);
 
     return (
         <div

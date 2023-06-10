@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Box, Heading, HStack, Text, Link, Flex } from '@chakra-ui/react'
 
 export default function Home() {
@@ -13,7 +12,7 @@ export default function Home() {
               <Heading as="h2" className='text-center m-5 !text-3xl'>
                 Tic Tac Toe
               </Heading>
-              <Image src='/tictactoe.png' className='m-auto' width={300} height={300} alt="tictactoe" />
+              <img src='/tictactoe.png' className='m-auto' width={300} height={300} alt="tictactoe" />
               <Text className="mt-5">
                 The classic game of Tic Tac Toe. Play against a friend and the computer will keep track of who won.
               </Text>
@@ -24,7 +23,7 @@ export default function Home() {
               <Heading as="h2" className='text-center m-5 !text-3xl'>
                 TaiGuessr
               </Heading>
-              <Image src='/taiguessr.png' className='m-auto' width={300} height={300} alt="taiguessr" />
+              <img src='/taiguessr.png' className='m-auto' width={300} height={300} alt="taiguessr" />
               <Text className="mt-5">
                 A browser-based geography game in which players guess locations from Google Street View imagery.
                 This game is based on <Link href="https://geoguessr.com">GeoGuessr</Link>, but only uses locations in Taiwan.
